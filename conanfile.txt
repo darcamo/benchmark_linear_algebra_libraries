@@ -1,0 +1,14 @@
+[requires]
+armadillo/9.600.4@darcamo/stable
+blaze/3.3@conan/release
+xtensor/0.20.8@darcamo/stable
+xtensor-blas/0.16.1@darcamo/stable
+xsimd/7.2.3@darcamo/stable
+eigen/3.3.7@conan/stable
+
+[options]
+# eigen:EIGEN_USE_BLAS=True
+# eigen:EIGEN_USE_LAPACKE=True
+
+[generators]
+cmake
