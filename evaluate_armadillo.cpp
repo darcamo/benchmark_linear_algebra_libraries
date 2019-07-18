@@ -4,9 +4,9 @@
 #include <chrono>
 
 std::tuple<double, double, double>
-evaluate_armadillo(unsigned int vec_size, unsigned int num_reps_vec_sum,
-                   unsigned int num_reps_vec_prod_mat,
-                   unsigned int num_reps_mat_inv) {
+evaluate_dynamic_armadillo(unsigned int vec_size, unsigned int num_reps_vec_sum,
+                           unsigned int num_reps_vec_prod_mat,
+                           unsigned int num_reps_mat_inv) {
   // xxxxxxxxxx Sum two vectors xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
   auto tic = get_time();
   arma::vec v1_arma = arma::randu<arma::vec>(vec_size);
@@ -22,7 +22,7 @@ evaluate_armadillo(unsigned int vec_size, unsigned int num_reps_vec_sum,
   tic = get_time();
   arma::mat m1_arma = arma::randu<arma::mat>(vec_size, vec_size);
   for (unsigned int i = 0; i < num_reps_vec_prod_mat; ++i) {
-    arma::vec prod = v1_arma * m1_arma;
+    arma::vec prod = v1_arma.st() * m1_arma;
   }
   toc = get_time();
   auto vec_mat_prod_duration = getTimeDuration(toc, tic);

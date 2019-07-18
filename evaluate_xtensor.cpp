@@ -7,7 +7,7 @@
 #include <xtensor/xrandom.hpp>
 
 std::tuple<double, double, double>
-evaluate_xtensor(unsigned int vec_size, unsigned int num_reps_vec_sum,
+evaluate_dynamic_xtensor(unsigned int vec_size, unsigned int num_reps_vec_sum,
                  unsigned int num_reps_vec_prod_mat,
                  unsigned int num_reps_mat_inv) {
 

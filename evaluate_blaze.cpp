@@ -5,9 +5,9 @@
 #include <chrono>
 
 std::tuple<double, double, double>
-evaluate_blaze(unsigned int vec_size, unsigned int num_reps_vec_sum,
-               unsigned int num_reps_vec_prod_mat,
-               unsigned int num_reps_mat_inv) {
+evaluate_dynamic_blaze(unsigned int vec_size, unsigned int num_reps_vec_sum,
+                       unsigned int num_reps_vec_prod_mat,
+                       unsigned int num_reps_mat_inv) {
 
   // xxxxxxxxxx Sum two vectors xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
   auto tic = get_time();
@@ -27,6 +27,7 @@ evaluate_blaze(unsigned int vec_size, unsigned int num_reps_vec_sum,
   // xxxxxxxxxx vector times matrix xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
   tic = get_time();
   blaze::DynamicMatrix<double> m1_blaze(vec_size, vec_size);
+  blaze::randomize(m1_blaze);
   for (unsigned int i = 0; i < num_reps_vec_prod_mat; ++i) {
     blaze::DynamicVector<double, blaze::rowVector> prod = blaze::trans(v1_blaze) * m1_blaze;
   }
