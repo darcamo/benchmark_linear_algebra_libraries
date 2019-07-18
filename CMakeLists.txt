@@ -20,8 +20,14 @@ target_link_libraries(evaluate_armadillo
         CONAN_PKG::armadillo
         common)
 
-# add_definitions(-DBLAZE_BLAS_MODE=1 )
-# add_definitions(-DBLAZE_USE_BLAS_MATRIX_VECTOR_MULTIPLICATION=1)
+#add_definitions(-DBLAZE_BLAS_MODE=1 )
+#add_definitions(-DBLAZE_USE_BLAS_MATRIX_VECTOR_MULTIPLICATION=1)
+#add_definitions(-DBLAZE_TDVECDMATMULT_THRESHOLD=50)
+#add_definitions(-DBLAZE_TDVECTDMATMULT_THRESHOLD=50)
+#add_definitions(-DBLAZE_TDMATDVECMULT_THRESHOLD=50)
+#add_definitions(-DBLAZE_DMATDMATMULT_THRESHOLD=50)
+#add_definitions(-DBLAZE_DMATTDMATMULT_THRESHOLD=50)
+#add_definitions(-DBLAZE_TDMATDMATMULT_THRESHOLD=50)
 add_library(evaluate_blaze
         evaluate_blaze.h
         evaluate_blaze.cpp)

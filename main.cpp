@@ -6,26 +6,34 @@
 #include "evaluate_xtensor.h"
 
 int main(int argc, char *argv[]) {
-  constexpr unsigned int vec_size = 100;
-  constexpr unsigned int num_reps_vec_sum = 10'000'000;
-  constexpr unsigned int num_reps_vec_prod_mat = 500'000;
-  constexpr unsigned int num_reps_mat_inv = 10'000;
+  constexpr unsigned int vec_size = 1000;
+  constexpr unsigned int num_reps_vec_sum = 1'000'000;
+  constexpr unsigned int num_reps_vec_prod_mat = 5'000;
+  constexpr unsigned int num_reps_mat_inv = 100;
 
+  std::cout << "Running armadillo code" << std::flush;
   auto [arma_sum_time, arma_vec_mat_prod_time, arma_mat_inv_time] =
       evaluate_armadillo(vec_size, num_reps_vec_sum, num_reps_vec_prod_mat,
                          num_reps_mat_inv);
+  std::cout << " -> done" << std::endl;
 
+  std::cout << "Running blaze code" << std::flush;
   auto [blaze_sum_time, blaze_vec_mat_prod_time, blaze_mat_inv_time] =
       evaluate_blaze(vec_size, num_reps_vec_sum, num_reps_vec_prod_mat,
                      num_reps_mat_inv);
+  std::cout << " -> done" << std::endl;
 
+  std::cout << "Running xtensor code" << std::flush;
   auto [xtensor_sum_time, xtensor_vec_mat_prod_time, xtensor_mat_inv_time] =
       evaluate_xtensor(vec_size, num_reps_vec_sum, num_reps_vec_prod_mat,
                        num_reps_mat_inv);
+  std::cout << " -> done" << std::endl;
 
+  std::cout << "Running eigen code" << std::flush;
   auto [eigen_sum_time, eigen_vec_mat_prod_time, eigen_mat_inv_time] =
       evaluate_eigen(vec_size, num_reps_vec_sum, num_reps_vec_prod_mat,
                      num_reps_mat_inv);
+  std::cout << " -> done\n" << std::endl;
 
   // xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
   // xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

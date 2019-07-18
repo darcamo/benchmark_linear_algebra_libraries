@@ -14,6 +14,9 @@ evaluate_blaze(unsigned int vec_size, unsigned int num_reps_vec_sum,
   blaze::DynamicVector<double> v1_blaze(vec_size);
   blaze::DynamicVector<double> v2_blaze(vec_size);
 
+  blaze::randomize(v1_blaze);
+  blaze::randomize(v2_blaze);
+
   for (unsigned int i = 0; i < num_reps_vec_sum; ++i) {
     blaze::DynamicVector<double> sum = v1_blaze + v2_blaze;
   }
